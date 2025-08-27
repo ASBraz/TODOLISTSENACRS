@@ -1,0 +1,411 @@
+/* Estilos base para a aplicação */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Definindo variáveis CSS para cores (modo claro) */
+:root {
+  /* Cores principais */
+  --primary-bg: #f3f4f6;
+  --secondary-bg: #ffffff;
+  --text-color: #1f2937;
+  --text-secondary: #6b7280;
+
+  /* Cores das categorias */
+  --gray: #9ca3af;
+  --blue: #3b82f6;
+  --yellow: #eab308;
+  --red: #ef4444;
+  --green: #10b981;
+  --purple: #8b5cf6;
+
+  /* Cores de borda e sombra */
+  --border-color: #e5e7eb;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  /* Transições */
+  --transition: all 0.2s ease;
+}
+
+/* Modo escuro - sobrescreve as variáveis */
+[data-theme="dark"] {
+  --primary-bg: #1f2937;
+  --secondary-bg: #374151;
+  --text-color: #f9fafb;
+  --text-secondary: #d1d5db;
+  --border-color: #4b5563;
+}
+
+/* Estilos gerais do corpo */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: var(--primary-bg);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 1rem;
+  transition: var(--transition);
+}
+
+/* Container principal */
+.container {
+  max-width: 56rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Cabeçalho */
+.header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.header-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-color);
+}
+
+.current-date {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+}
+
+/* Botão de alternar tema */
+.theme-toggle {
+  background: var(--secondary-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Abas de navegação */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab-button {
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.tab-button:hover {
+  background-color: var(--primary-bg);
+}
+
+.tab-button.active {
+  color: white;
+}
+
+/* Conteúdo das abas */
+.tab-contents {
+  width: 100%;
+}
+
+.tab-content {
+  display: none;
+  background-color: var(--secondary-bg);
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+  margin-bottom: 1.5rem;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+/* Lista de tarefas */
+.task-list {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.task-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  transition: var(--transition);
+  margin-bottom: 0.5rem;
+}
+
+.task-list li:hover {
+  background-color: var(--primary-bg);
+}
+
+.task-list li.completed>div>.task-text {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+.task-time {
+  font-weight: 600;
+  color: var(--text-secondary);
+  width: 3.5rem;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.task-checkbox {
+  height: 1.25rem;
+  width: 1.25rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--border-color);
+  margin: 0 0.75rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.task-text {
+  font-size: 1.125rem;
+  color: var(--text-color);
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.remove-task-btn {
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  transition: var(--transition);
+  flex-shrink: 0;
+  margin-left: 0.5rem;
+}
+
+.remove-task-btn:hover {
+  color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* Formulário para adicionar tarefas */
+.add-task-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.add-task-form input[type="text"],
+.add-task-form input[type="time"] {
+  flex-grow: 1;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  min-width: 150px;
+}
+
+.add-task-form button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.add-task-form button:hover {
+  opacity: 0.9;
+}
+
+/* Estilos para a seção de relatório */
+.report-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--border-color);
+}
+
+.report-summary {
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: var(--primary-bg);
+  margin-bottom: 1.5rem;
+}
+
+.report-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.report-category {
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+  width: 100%;
+  background-color: var(--primary-bg);
+  border-radius: 0.75rem;
+  height: 1rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 0.75rem;
+  transition: width 0.5s ease;
+}
+
+.pending-tasks {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.pending-tasks h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.pending-list {
+  list-style: none;
+}
+
+.pending-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Prefixos de categoria (usados na visão geral) */
+.category-prefix {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-right: 0.5rem;
+}
+
+/* Cores específicas para cada categoria */
+.category-geral {
+  color: var(--gray);
+}
+
+.category-trabalho {
+  color: var(--blue);
+}
+
+.category-estudo {
+  color: var(--yellow);
+}
+
+.category-atividade-fisica {
+  color: var(--red);
+}
+
+.category-alimentacao {
+  color: var(--green);
+}
+
+.category-saude {
+  color: var(--purple);
+}
+
+.bg-geral {
+  background-color: var(--gray);
+}
+
+.bg-trabalho {
+  background-color: var(--blue);
+}
+
+.bg-estudo {
+  background-color: var(--yellow);
+}
+
+.bg-atividade-fisica {
+  background-color: var(--red);
+}
+
+.bg-alimentacao {
+  background-color: var(--green);
+}
+
+.bg-saude {
+  background-color: var(--purple);
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.875rem;
+  }
+
+  .tabs {
+    gap: 0.25rem;
+  }
+
+  .tab-button {
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .tab-content {
+    padding: 1rem;
+  }
+
+  .add-task-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-task-form input[type="text"],
+  .add-task-form input[type="time"] {
+    width: 100%;
+  }
+}

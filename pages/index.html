@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dia a Dia</title>
+  <!-- Link para o arquivo CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Container Principal -->
+  <div class="container">
+    <!-- Cabeçalho com Data e Botão de Tema -->
+    <header class="header">
+      <div class="header-top">
+        <h1>Dia a Dia</h1>
+        <!-- Botão para alternar entre tema claro e escuro -->
+        <button id="theme-toggle" class="theme-toggle" aria-label="Alternar tema">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+      <p id="current-date" class="current-date"></p>
+    </header>
+
+    <!-- Navegação por Abas -->
+    <div id="tabs" class="tabs">
+      <button data-tab="geral" class="tab-button">Visão Geral</button>
+      <button data-tab="trabalho" class="tab-button">Trabalho</button>
+      <button data-tab="estudo" class="tab-button">Estudo</button>
+      <button data-tab="atividade-fisica" class="tab-button">Atividade Física</button>
+      <button data-tab="alimentacao" class="tab-button">Alimentação</button>
+      <button data-tab="saude" class="tab-button">Saúde</button>
+    </div>
+
+    <!-- Conteúdo das Abas -->
+    <main id="tab-contents" class="tab-contents">
+      <!-- Aba Visão Geral (com Relatório) -->
+      <div id="geral" class="tab-content">
+        <h2>✨ Timeline do Dia</h2>
+        <ul id="geral-list" class="task-list"></ul>
+
+        <!-- Seção do Relatório -->
+        <div class="report-section">
+          <h2>📈 Relatório de Progresso</h2>
+          <div id="report-summary" class="report-summary"></div>
+          <div id="report-details" class="report-details"></div>
+          <div id="pending-tasks-summary" class="pending-tasks">
+            <h3>Tarefas Pendentes</h3>
+            <ul id="pending-tasks-list" class="pending-list"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Abas de Categoria -->
+      <div id="trabalho" class="tab-content"></div>
+      <div id="estudo" class="tab-content"></div>
+      <div id="atividade-fisica" class="tab-content"></div>
+      <div id="alimentacao" class="tab-content"></div>
+      <div id="saude" class="tab-content"></div>
+    </main>
+  </div>
+
+  <!-- Link para o arquivo JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>
